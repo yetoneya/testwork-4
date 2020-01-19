@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Quiz list</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+
+            body {
+                padding: 10px;
+                background: #cfd4de;
+                border-color: #03271d;                 
+            }
+            label {
+                padding-left: 5px;
+                background: #f2e0b4;
+                border: 2px solid #779a8b;
+                border-radius: 5px;
+                display: inline-block;
+                width: 100px;
+            }
+            input{
+                padding-left: 5px;
+                background:  #bfccc6;
+                margin-left: 5px;
+                border-radius: 5px;
+
+            }
+
+            .find{
+                width: 300px; 
+                border-radius: 5px;
+            }
+
+            .row{
+                margin-top: 10px;
+                margin-left: 5px;              
+            }
+
+            .submit{
+                background: #f1d99f; 
+                text-align: center;
+                width: 150px;
+                border: 2px solid #779a8b;
+                border-radius: 5px;
+            }
+
+            select{
+                background:  #bfccc6;
+                min-width: 800px;
+                border: 3px solid #bbc8d0;
+                border-radius: 5px;
+
+            }
+            textarea{
+                background:  #bfccc6;
+                border: 3px solid #bbc8d0;
+                min-height: 20px;
+                min-width: 794px;
+                resize: none;
+                overflow-y: scroll;
+                line-break: auto;
+                border-radius: 5px;
+            }
+            ::-webkit-scrollbar{
+                background-color:#b2c1bd
+            }
+
+
+            .update-quiz {
+                background: #f1d99f;
+                text-align: center;
+                width: 100px;
+                height: 40px;
+                border: 2px solid #779a8b;
+                border-radius: 5px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <a th:href="@{/}" href="action.html">Home</a>
+        <h3>Quizes:</h3>                     
+        <form  id="quizes" action="list.html">
+            <select id="quiz-list" size="8">               
+                <option th:each="quiz : ${quizes}"
+                        th:value="${quiz.id}"
+                        th:text="${quiz.name}">quiz name</option>              
+            </select> 
+            <br>                      
+            <p><input id="show-button" class="submit" type="submit" value ="show" disabled="disabled"/> <input id="delete-button" class="submit" type="button" value ="delete" disabled="disabled"/></p>
+        </form>
+        <h3>Quiz:</h3> 
+        <form  id="edit-form" action="list.html">         
+            <input id="id" type="hidden"/>          
+            <div class="row">
+                <label for="name">Name: </label>
+                <input class ="find" id="name" type="text" value="name"/>
+            </div>
+            <div class="row">
+                <label for="start">Start date: </label>
+                <input class ="find" id="start" type="date"  value="start date"/>
+            </div>
+            <div class="row">
+                <label for="end">End date: </label>
+                <input class ="find" id="end" type="date"  value="end date"/>
+            </div> 
+            <div class ="row">
+                <input id="active" name="active" type="checkbox"/> Active 
+            </div> 
+            <br>
+            <select id="question-list" size="8"> 
+                <option th:each="question: ${questions}"
+                        th:value="${question.id}"
+                        th:text="${question.seq}+', '+${question.text}">questions</option>              
+            </select>
+        </form> 
+        <p>Question to edit: </p>       
+        <textarea id="question-text"> 
+        </textarea>                 
+        <p><input id="update-question" class="submit" type="button" value ="update question" disabled="disabled"/></p> 
+        <p><input id="update-quiz" class="update-quiz" type="button" value ="update" disabled="disabled"/> 
+        <p id="result"></p>
+        <script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>
+        <script type="text/javascript" src="selectquiz.js"></script>
+        <script type="text/javascript" src="deletequiz.js"></script>
+        <script type="text/javascript" src="showquiz.js"></script>
+        <script type="text/javascript" src="getquestion.js"></script>
+        <script type="text/javascript" src="updatequestion.js"></script>
+        <script type="text/javascript" src="updatequiz.js"></script>
+    </body>
+</html>
+

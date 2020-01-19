@@ -1,0 +1,19 @@
+## YAML Template.
+---
+spring:
+   jpa:
+      database: POSTGRESQL
+      show-sql: true
+      ##hibernate:
+      ##   ddl-auto: create-drop
+      properties:
+         hibernate:
+            jdbc:
+               lob:
+                  non_contextual_creation: true               
+   datasource:
+      platform: postgres
+      url: jdbc:postgresql://localhost:5432/testdb
+      username: postgres
+      password: postgres
+    

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Home</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+
+            body {
+                padding: 20px;
+                background: #cfd4de;
+                border-color: #03271d;                 
+            }
+            label {
+                padding-left: 5px;
+                background: #f2e0b4;
+                border: 2px solid #779a8b;
+                border-radius: 5px;
+                display: inline-block;
+                width: 125px;
+            }
+            input{
+                padding-left: 5px;
+                background:  #bfccc6;
+                width: 600px;
+                margin-left: 5px;
+                border-radius: 5px;
+            }
+            .find{
+                width: 600px; 
+                border-radius: 5px;
+            }
+            .submit{
+                background: #f1d99f;
+                text-align: center;
+                width: 100px;
+                border: 2px solid #779a8b;
+                border-radius: 5px;         
+            } 
+            .number{
+                width: 220px;
+            } 
+        </style>
+    </head>
+    <body>
+        <a th:href="@{/}" href="action.html">Home</a>
+        <br>
+        <h3>Find quizes: </h3> 
+        <br>
+        <form th:action="@{/byname(name=${name})}" action="list.html"> 
+            <label for="name">Find by name: </label>
+            <input class="find" id="name" name="name" type="text"/> <input class="submit" type="submit" value="send"/>
+        </form>
+        <br><br>
+        <form class="row" th:action="@{/bystart(start=${start})}" action="list.html">
+            <label for="start">Find by start date: </label>
+            <input class="find" id="start" name="start" type="date"/> <input class="submit" type="submit" value="send"/>
+        </form>
+        <br><br>
+        <form class="row" th:action="@{/byend(end=${end})}" action="list.html">
+            <label for="end">Find by end date: </label>
+            <input class="find" id="end" name ="end" type="date"/> <input class="submit" type="submit" value="send"/>
+        </form>
+        <br><br>
+        <form class="row" th:action="@{/all}" action="list.html">
+            <label for="all">Find all: &nbsp; </label>
+            <input class="submit" id ="all" name="all" type="submit" value="send"/>
+        </form>
+        <br><br>
+        <form class="row" th:action="@{/page}" action="list.html">
+            <p>Find page: </p>
+            <label for="page">Page number: </label>
+            <input class ="number" id="page"  type="number"/>
+            <label for="size">Page size: </label>
+            <input class ="number" id="size"  type="number"/>
+            <input class="submit" type="submit" value="send"/>
+        </form>
+    </body>
+</html>

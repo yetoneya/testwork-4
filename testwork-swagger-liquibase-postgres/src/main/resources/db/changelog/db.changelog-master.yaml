@@ -1,0 +1,73 @@
+databaseChangeLog:
+    - changeSet:
+        id: 1
+        author: postgres
+        preConditions:
+          onFail: MARK_RAN
+          not:
+            tableExists:
+               schemaName: public
+               tableName: quiz
+        changes:
+            - createTable:
+                tableName: quiz
+                columns:
+                    - column:
+                        name: id
+                        type: bigint
+                        autoIncrement: true
+                        constraints:
+                            primaryKey: true
+                            nullable: false
+                    - column:
+                        name: name
+                        type: varchar(255)
+                        constraints:
+                            nullable: false
+                            unique: true
+                    - column:
+                        name: start_date
+                        type: varchar(40)
+                        constraints:                                                
+                            nullable: false
+                    - column:
+                        name: end_date
+                        type: varchar(40)
+                        constraints:
+                            nullable: false
+                    - column:
+                        name: is_active
+                        type: BOOLEAN
+    - changeSet:
+         id: 2
+         author: postgres
+         preConditions:
+           onFail: MARK_RAN
+           not:
+             tableExists:
+                schemaName: public
+                tableName: question
+         changes:
+            - createTable:
+                tableName: question
+                columns:
+                    - column:
+                        name: id
+                        type: bigint
+                        autoIncrement: true
+                        constraints:
+                            primaryKey: true
+                            nullable: false
+                    - column:
+                        name: seq
+                        type: int
+                        constraints:                                                
+                            nullable: false
+                    - column:
+                        name: content
+                        type: varchar(255)
+                        constraints:
+                            nullable: false                          
+                    - column:
+                        name: quiz_id
+                        type: bigint

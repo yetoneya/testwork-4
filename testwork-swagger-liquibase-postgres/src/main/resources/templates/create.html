@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Home</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+
+            body {
+                padding: 20px;
+                background: #cfd4de;
+                border-color: #03271d;                 
+            }
+            label {
+                padding-left: 5px;
+                background: #f2e0b4;
+                border: 2px solid #779a8b;
+                border-radius: 5px;
+                display: inline-block;
+                width: 125px;
+            }
+            input{
+                padding-left: 5px;
+                background:  #bfccc6;
+                margin-left: 5px;
+                border-radius: 5px;
+            }
+            .find{
+                width: 300px; 
+                border-radius: 5px;
+            }
+            .row{
+                margin-top: 10px;
+                margin-left: 5px;              
+            }
+
+            .submit{
+                background: #f1d99f;
+                text-align: center;
+                width: 100px;
+                border: 2px solid #779a8b;
+                border-radius: 5px;
+            }
+
+            .quiz-save {
+                background: #f1d99f;
+                text-align: center;
+                width: 100px;
+                height: 40px;
+                border: 2px solid #779a8b;
+                border-radius: 5px;
+            }
+            #create-question{
+                border: 2px solid #779a8b;
+                padding-left: 10px;
+                width: 900px;
+            }
+            #content{
+               width: 720px; 
+            }
+        </style>
+    </head>
+    <body>
+        <a th:href="@{/}" href="action.html">Home</a>
+        <br>
+        <h3>Create quiz:</h3>
+        <br>
+        <form id="quiz-form" action="list.html"> 
+            <div class ="row">
+                <label for="name">Name: </label>
+                <input class="find" id="name" name="name" type="text" value="name"/>          
+            </div> 
+            <br>
+            <div class ="row">
+                <label for="start">Start date: </label>
+                <input class="find" id="start" name="start" type="date"/> 
+            </div>
+            <br>
+            <div class ="row">
+                <label for="end">End date: </label>
+                <input class="find" id="end" name ="end" type="date"/>
+            </div>          
+            <br>
+            <div class ="row">
+                <input id="active" name="active" type="checkbox" checked="checked"/> Active 
+            </div>        
+            <br>           
+        </form>
+        <div id="create-question">
+            <p>Create questions for quiz:</p>
+            <br>
+            <form id="question-form" action="list.html">
+                <div class ="row">
+                    <label for="seq">Numerical order: </label>
+                    <input class="find" id="seq" name ="seq" type="number"/>          
+                </div> 
+                <br>
+                <div class ="row">
+                    <label for="content">Question: </label>
+                    <input id="content" name="content" type="text"/> 
+                </div>
+                <br>
+                <p><input class="submit" type="submit" value="save"/></p>
+            </form>
+            <br>
+            <p id="question-result"></p>
+        </div>
+        <br>
+        <p><input class="quiz-save" id="quiz-save" type="button" value="send"/></p>
+        <br>
+        <p id="quiz-result"></p>
+        <script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>
+        <script type="text/javascript" src="createquestion.js"></script>
+        <script type="text/javascript" src="createquiz.js"></script>
+    </body>
+</html>
